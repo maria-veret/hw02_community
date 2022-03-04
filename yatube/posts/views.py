@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpRequest, HttpResponse
 from .models import Post, Group
 
 
-def index(request: str) -> str:
+def index(request: HttpRequest) -> HttpResponse:
     """Функция для главной страницы,
     отображение последних 10 постов.
     """
@@ -16,7 +17,7 @@ def index(request: str) -> str:
     return render(request, template, context)
 
 
-def group_posts(request: str, slug: str) -> str:
+def group_posts(request: HttpRequest, slug: str) -> HttpResponse:
     """Функция для записей сообщества,
     отображение последних 10 постов группы.
     """
